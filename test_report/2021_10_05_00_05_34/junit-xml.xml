@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="2" time="39.130" timestamp="2021-10-05T00:05:34.276416" hostname="DESKTOP-62OUUKF"><testcase classname="test_dir.test_baidu.TestSearch" name="test_baidu_search_case" time="29.252"><failure message="AssertionError: assert 'pytest_百度搜索' == 'pytest_22百度搜索'&#10;  - pytest_22百度搜索&#10;  ?        --&#10;  + pytest_百度搜索">self = &lt;test_baidu.TestSearch object at 0x00000244C65D9CD0&gt;, browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="a02ab51a308170aed7ba132a4e2bb9f0")&gt;
+base_url = 'https://www.baidu.com'
+
+    def test_baidu_search_case(self, browser, base_url):
+        """
+        名称：百度搜索"pytest"
+        步骤：
+        1、打开浏览器
+        2、输入"pytest"关键字
+        3、点击搜索按钮
+        检查点：
+        * 检查页面标题是否包含关键字。
+        """
+        page = BaiduPage(browser)
+        page.get(base_url)
+        page.search_input = "pytest"
+        page.search_button.click()
+        sleep(2)
+&gt;       assert browser.title == "pytest_22百度搜索"
+E       AssertionError: assert 'pytest_百度搜索' == 'pytest_22百度搜索'
+E         - pytest_22百度搜索
+E         ?        --
+E         + pytest_百度搜索
+
+test_dir\test_baidu.py:33: AssertionError</failure></testcase><testcase classname="test_dir.test_baidu.TestSearchSettings" name="test_baidu_search_setting" time="9.277" /></testsuite></testsuites>
